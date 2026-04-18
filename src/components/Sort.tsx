@@ -1,60 +1,54 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  Sort,
-  SortPropertyEnum,
-  selectSort,
-  setSort,
-} from './redux/slices/filterSlice'
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Sort, SortPropertyEnum, setSort } from "./redux/slices/filterSlice";
 
 type SortItem = {
-  name: string
-  sortProperty: SortPropertyEnum
-}
+  name: string;
+  sortProperty: SortPropertyEnum;
+};
 type SortProps = {
-  value: Sort
-}
-type PopupClick = React.MouseEvent<HTMLElement> & {
-  composedPath: () => void
-  path: Node[]
-}
+  value: Sort;
+};
+// type PopupClick = React.MouseEvent<HTMLElement> & {
+//   composedPath: () => void
+// }
 export const lists: SortItem[] = [
-  { name: 'популярности(Desc)', sortProperty: SortPropertyEnum.RATING_DESC },
-  { name: 'популярности(Asc)', sortProperty: SortPropertyEnum.PRICE_ASC },
-  { name: 'цене(Desc)', sortProperty: SortPropertyEnum.PRICE_DESC },
-  { name: 'цене(Asc)', sortProperty: SortPropertyEnum.PRICE_ASC },
-  { name: 'алфавиту(Desc)', sortProperty: SortPropertyEnum.TITLE_DESC },
-  { name: 'алфавиту(Asc)', sortProperty: SortPropertyEnum.TITLE_ASC },
-]
+  { name: "популярности(Desc)", sortProperty: SortPropertyEnum.RATING_DESC },
+  { name: "популярности(Asc)", sortProperty: SortPropertyEnum.PRICE_ASC },
+  { name: "цене(Desc)", sortProperty: SortPropertyEnum.PRICE_DESC },
+  { name: "цене(Asc)", sortProperty: SortPropertyEnum.PRICE_ASC },
+  { name: "алфавиту(Desc)", sortProperty: SortPropertyEnum.TITLE_DESC },
+  { name: "алфавиту(Asc)", sortProperty: SortPropertyEnum.TITLE_ASC },
+];
 
-const SortPopUp: React.FC<SortProps> = React.memo(({ value }) => {
-  const sortRef = useRef<HTMLDivElement>(null)
-  const dispatch = useDispatch()
-  const sort = useSelector(selectSort)
+const SortPopUp: React.FC<SortProps> = ({ value }) => {
+  const sortRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch();
+  //const sort = useSelector(selectSort)
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const onClickListItem = (index: SortItem) => {
-    dispatch(setSort(index))
-    setOpen(false)
-  }
+    dispatch(setSort(index));
+    setOpen(false);
+  };
 
   useEffect(() => {
-    console.log('sort mount')
     const handleClickOutside = (event: MouseEvent) => {
-      const _event = event as MouseEvent & PopupClick
-      const path = _event.composedPath ? _event.composedPath() : _event.path
-      if (sortRef.current && !path?.includes(sortRef.current)) {
-        setOpen(false)
-        console.log('click outside')
+      if (
+        sortRef.current &&
+        !event?.composedPath()?.includes(sortRef.current)
+      ) {
+        setOpen(false);
+        console.log("click outside");
       }
-    }
-    document.body.addEventListener('click', handleClickOutside)
+    };
+    document.body.addEventListener("click", handleClickOutside);
     return () => {
-      console.log('sort unmount')
-      document.body.removeEventListener('click', handleClickOutside)
-    }
-  }, [])
+      //console.log('sort unmount')
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div ref={sortRef} className="sort">
@@ -81,7 +75,7 @@ const SortPopUp: React.FC<SortProps> = React.memo(({ value }) => {
               <li
                 key={index}
                 className={
-                  value.sortProperty === list.sortProperty ? 'active' : ''
+                  value.sortProperty === list.sortProperty ? "active" : ""
                 }
                 onClick={() => onClickListItem(list)}
               >
@@ -92,6 +86,6 @@ const SortPopUp: React.FC<SortProps> = React.memo(({ value }) => {
         </div>
       )}
     </div>
-  )
-})
-export default SortPopUp
+  );
+};
+export default React.memo(SortPopUp);

@@ -1,25 +1,22 @@
-import { Link, useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import logoSvg from '../assets/img/pizza-logo.svg'
-import Search from './Search'
-import { selectCart } from './redux/slices/cartSlice'
-import { useEffect, useRef } from 'react'
-import React from 'react'
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import logoSvg from "../assets/img/pizza-logo.svg";
+import Search from "./Search";
+import { selectCart } from "./redux/slices/cartSlice";
+import { useEffect, useRef } from "react";
 const Header = () => {
-  const { items, totalPrice } = useSelector(selectCart)
-  const location = useLocation()
-  const totalCount = items.reduce(
-    (sum: number, item: any) => sum + item.count,
-    0
-  )
-  const isMounted = useRef(false)
+  const { items, totalPrice } = useSelector(selectCart);
+  const location = useLocation();
+  console.log(location);
+  const totalCount = items.reduce((sum: number, item) => sum + item.count, 0);
+  const isMounted = useRef(false);
   useEffect(() => {
     if (isMounted.current) {
-      const json = JSON.stringify(items)
-      localStorage.setItem('cart', json)
+      const json = JSON.stringify(items);
+      localStorage.setItem("cart", json);
     }
-    isMounted.current = true
-  }, [items])
+    isMounted.current = true;
+  }, [items]);
   return (
     <div className="header">
       <div className="container">
@@ -34,9 +31,13 @@ const Header = () => {
         </Link>
         <Search />
         <div className="header__cart">
-          {location.pathname !== '/cart' && (
-            <Link to="/cart" className="button button--cart">
-              <span>{totalPrice} ₽</span>
+          {location.pathname !== "/cart" && (
+            <Link
+              to="/cart"
+              className="button button--cart"
+              aria-label="cart-button"
+            >
+              <span>{totalPrice} ₸</span>
               <div className="button__delimiter"></div>
               <svg
                 width="18"
@@ -73,6 +74,6 @@ const Header = () => {
         </div>
       </div>
     </div>
-  )
-}
-export default Header
+  );
+};
+export default Header;

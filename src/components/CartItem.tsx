@@ -1,22 +1,22 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import clsx from 'clsx'
+import React from "react";
+import { useDispatch } from "react-redux";
+//import clsx from 'clsx'
 import {
   CartItem,
   addItem,
   minusItem,
   removeItem,
-} from './redux/slices/cartSlice'
+} from "./redux/slices/cartSlice";
 
 type CartItemProps = {
-  id: string
-  title: string
-  type: string
-  size: number
-  price: number
-  count: number
-  imageUrl: string
-}
+  id: string;
+  title: string;
+  type: string;
+  size: number;
+  price: number;
+  count: number;
+  imageUrl: string;
+};
 const CartItemBlock: React.FC<CartItemProps> = ({
   id,
   title,
@@ -26,24 +26,24 @@ const CartItemBlock: React.FC<CartItemProps> = ({
   count,
   imageUrl,
 }) => {
-  const dispatch = useDispatch()
-  const checkedCount = count > 0 ? false : true
+  const dispatch = useDispatch();
+  const checkedCount = count > 0 ? false : true;
 
   const onClickPlus = () => {
     dispatch(
       addItem({
         id,
-      } as CartItem)
-    )
-  }
+      } as CartItem),
+    );
+  };
   const onClickMinus = () => {
-    dispatch(minusItem(id))
-  }
+    dispatch(minusItem(id));
+  };
   const onClickRemove = () => {
-    if (window.confirm('Are you sure you want to remove?')) {
-      dispatch(removeItem(id))
+    if (window.confirm("Are you sure you want to remove?")) {
+      dispatch(removeItem(id));
     }
-  }
+  };
   return (
     <div className="cart__item">
       <div className="cart__item-img">
@@ -102,7 +102,7 @@ const CartItemBlock: React.FC<CartItemProps> = ({
         </div>
       </div>
       <div className="cart__item-price">
-        <b>{price * count} ₽</b>
+        <b>{price * count} ₸</b>
       </div>
       <div className="cart__item-remove">
         <div
@@ -128,6 +128,6 @@ const CartItemBlock: React.FC<CartItemProps> = ({
         </div>
       </div>
     </div>
-  )
-}
-export default CartItemBlock
+  );
+};
+export default CartItemBlock;
