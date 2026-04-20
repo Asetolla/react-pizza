@@ -9,10 +9,10 @@ import pizzaReducer from "../components/redux/slices/pizzaSlice";
 import filterReducer from "../components/redux/slices/filterSlice";
 import cartReducer from "../components/redux/slices/cartSlice";
 import { jest } from "@jest/globals";
+import Home from "../pages/Home";
 
 jest.mock("axios");
 const mockedAxios = axios;
-import Home from "../pages/Home";
 
 const createTestStore = () => {
   return configureStore({

@@ -8,13 +8,12 @@ import axios from "axios";
 import pizzaReducer from "../components/redux/slices/pizzaSlice";
 import filterReducer from "../components/redux/slices/filterSlice";
 import cartReducer from "../components/redux/slices/cartSlice";
-
-import { jest } from "@jest/globals";
-jest.mock("axios");
-const mockedAxios = axios;
 import Home from "../pages/Home";
 import Cart from "../pages/Cart";
 import Header from "../components/Header";
+import { jest } from "@jest/globals";
+jest.mock("axios");
+const mockedAxios = axios;
 
 const createTestStore = () => {
   return configureStore({
