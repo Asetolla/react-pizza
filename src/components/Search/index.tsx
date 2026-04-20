@@ -1,30 +1,30 @@
-import React, { useCallback, useRef, useState } from 'react'
-import styles from './Search.module.scss'
-import debounce from 'lodash.debounce'
-import { useDispatch } from 'react-redux'
-import { setSearchValue } from '../redux/slices/filterSlice'
+import React, { useCallback, useRef, useState } from "react";
+import styles from "./Search.module.scss";
+import debounce from "lodash.debounce";
+import { useDispatch } from "react-redux";
+import { setSearchValue } from "../redux/slices/filterSlice";
 export const Search: React.FC = () => {
-  const dispatch = useDispatch()
-  const [value, setValue] = useState('')
-  const inputRef = useRef<HTMLInputElement>(null)
+  const dispatch = useDispatch();
+  const [value, setValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onClickClear = () => {
-    dispatch(setSearchValue(''))
-    setValue('')
-    inputRef.current?.focus()
-  }
+    dispatch(setSearchValue(""));
+    setValue("");
+    inputRef.current?.focus();
+  };
 
   const updateSearchValue = useCallback(
     debounce((str) => {
-      dispatch(setSearchValue(str))
+      dispatch(setSearchValue(str));
     }, 300),
-    []
-  )
+    [],
+  );
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value)
-    updateSearchValue(event.target.value)
-  }
+    setValue(event.target.value);
+    updateSearchValue(event.target.value);
+  };
 
   return (
     <div className={styles.root}>
@@ -70,6 +70,7 @@ export const Search: React.FC = () => {
       {value && (
         <svg
           onClick={onClickClear}
+          aria-label="clear search"
           className={styles.clearIcon}
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -78,6 +79,6 @@ export const Search: React.FC = () => {
         </svg>
       )}
     </div>
-  )
-}
-export default Search
+  );
+};
+export default Search;

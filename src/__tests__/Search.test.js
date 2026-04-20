@@ -44,7 +44,8 @@ describe("Search component", () => {
 
     await user.type(input, "cheese");
 
-    const clearBtn = document.querySelector(".clearIcon");
+    const clearBtn = screen.getByLabelText("clear search");
+
     await user.click(clearBtn);
 
     expect(input).toHaveValue("");
