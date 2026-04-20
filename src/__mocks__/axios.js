@@ -1,5 +1,4 @@
-import jest from "jest";
-
+import { jest } from "@jest/globals";
 const axios = {
   get: jest.fn(),
   post: jest.fn(),

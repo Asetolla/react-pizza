@@ -1,48 +1,66 @@
-@import '../variables.scss';
+@import '../variables';
+
+.pizza-block-wrapper {
+  display: flex;
+  justify-content: center;
+}
 
 .pizza-block {
   width: 280px;
+  background: #fff;
+  border-top: 2px solid #fe5f1e;
+  border-bottom: 2px solid #fe5f1e;
+  padding: 30px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 5%);
   text-align: center;
-  margin-bottom: 65px;
 
   &__image {
-    width: 260px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
   }
 
   &__title {
     font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 1%;
-    margin-bottom: 20px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: 0.01em;
   }
 
   &__selector {
-    display: flex;
-    background-color: #f3f3f3;
+    background: #f6f6f6;
     border-radius: 10px;
-    flex-direction: column;
     padding: 6px;
+    margin-bottom: 15px;
 
     ul {
       display: flex;
-      flex: 1;
+      list-style: none;
+      padding: 0;
+      margin: 0;
 
       &:first-of-type {
         margin-bottom: 6px;
       }
 
       li {
-        padding: 8px;
         flex: 1;
-        cursor: pointer;
+        padding: 8px;
+        font-size: 13px;
         font-weight: 600;
-        font-size: 14px;
-        @include noselect();
+        cursor: pointer;
+        border-radius: 6px;
+        transition: 0.2s;
+        user-select: none;
+
         &.active {
-          background: #ffffff;
-          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
-          border-radius: 5px;
-          cursor: auto;
+          background: #fff;
+          box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+          cursor: default;
         }
       }
     }
@@ -50,15 +68,46 @@
 
   &__bottom {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     margin-top: 20px;
   }
 
   &__price {
-    font-weight: bold;
-    font-size: 22px;
-    line-height: 27px;
-    letter-spacing: 0.015em;
+    font-size: 16px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fe5f1e;
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 18px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+
+    &:hover {
+      background: #e5531a;
+    }
+
+    span {
+      margin-left: 6px;
+    }
+
+    i {
+      margin-left: 8px;
+      background: #fff;
+      color: #fe5f1e;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
   }
 }

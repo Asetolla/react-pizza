@@ -6,13 +6,15 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.8",
     "@types/node": "^20.9.2",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "ahooks": "^3.7.10",
+    "ajv": "^8.12.0",
+    "ajv-keywords": "^5.1.0",
     "axios": "^1.6.1",
     "clsx": "^2.1.0",
     "lodash.debounce": "^4.0.8",
@@ -40,7 +42,9 @@
     "format": "prettier . --write",
     "lint": "npm run lint:js ; npm run lint:css",
     "lint:fix": "npm run lint:js:fix ; npm run lint:css:fix ; npm run format",
-    "prepare": "husky"
+    "prepare": "husky",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -71,16 +75,42 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-onboarding": "^10.3.5",
+    "@storybook/preset-create-react-app": "^10.3.5",
+    "@storybook/react-webpack5": "^10.3.5",
     "@types/lodash.debounce": "^4.0.9",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-storybook": "^10.3.5",
     "globals": "^17.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
+    "loki": "^0.35.1",
     "prettier": "^3.8.3",
+    "prop-types": "^15.8.1",
+    "storybook": "^10.3.5",
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^17.0.0",
-    "typescript-eslint": "^8.58.2"
+    "typescript-eslint": "^8.58.2",
+    "webpack": "^5.106.2"
+  },
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.app",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.app",
+        "preset": "iPhone 7"
+      }
+    }
   }
 }

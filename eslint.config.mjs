@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook'
+
 import js from '@eslint/js'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
@@ -8,28 +11,21 @@ import { defineConfig } from 'eslint/config'
 export default defineConfig([
   // Базовые JS правила
   js.configs.recommended,
-
-  // TypeScript
-  ...tseslint.configs.recommended,
-
-  // React
+  ...tseslint.configs.recommended, // TypeScript
   {
-    ...react.configs.flat.recommended,
+    ...react.configs.flat.recommended, // React
     settings: {
       react: {
         version: 'detect',
       },
     },
-  },
-
-  // Общие настройки
+  }, // Общие настройки
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       globals: globals.browser,
     },
     rules: {
-      // 🔥 кастомные правила (обязательно для аттестации)
       '@typescript-eslint/no-unused-vars': 'warn',
       'no-console': 'warn',
       'react/react-in-jsx-scope': 'off',
@@ -58,7 +54,6 @@ export default defineConfig([
       'no-console': 'off',
     },
   },
-
-  // Prettier (всегда в конце)
   prettier,
+  ...storybook.configs['flat/recommended'],
 ])
