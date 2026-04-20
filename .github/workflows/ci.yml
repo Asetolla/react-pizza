@@ -38,6 +38,8 @@ jobs:
       # 5. Сборка
       - name: build project
         run: npm run build
+        env:
+          CI: false
 
       # 6. Deploy
       - uses: actions/upload-pages-artifact@v3
