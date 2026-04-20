@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import {
   CartItem,
   addItem,
   selectCartItemById,
 } from "../redux/slices/cartSlice";
 import React from "react";
+import PizzaBlockContainer from "./PizzaBlockContainer";
+
 export type PizzaBlockProps = {
   id: string;
   title: string;
@@ -15,7 +16,6 @@ export type PizzaBlockProps = {
   sizes: number[];
   types: number[];
 };
-import PizzaBlockContainer from "./PizzaBlockContainer";
 
 const typeNames = ["тонкое", "традиционнное"];
 
