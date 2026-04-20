@@ -28,7 +28,7 @@ export const Page: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <strong>component-driven</strong>
+            <strong>component-drivenn</strong>
           </a>{" "}
           process starting with atomic components and ending with pages.
         </p>
