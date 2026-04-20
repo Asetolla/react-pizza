@@ -29,7 +29,7 @@ jobs:
 
       # 3. Prettier check (не форматирует, а проверяет)
       - name: check prettier
-        run: npx prettier . --check
+        run: npm run format
 
       # 4. Тесты
       - name: run tests
