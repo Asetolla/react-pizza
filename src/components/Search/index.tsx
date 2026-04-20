@@ -71,7 +71,7 @@ export const Search: React.FC = () => {
         <svg
           onClick={onClickClear}
           aria-label="clear search"
-          className={styles.clearIcon}
+          className={styles["clear-icon"]}
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
         >

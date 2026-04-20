@@ -1,15 +1,17 @@
-@import '../variables.scss';
+@import '../variables';
 
 .header {
-  border-bottom: 1px solid $gray-line;
   padding: 40px 0;
+  border-bottom: 1px solid $gray-line;
 
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @media (max-width: 645px) {
+
+    @media (width <= 645px) {
       flex-direction: column;
+
       .header__cart {
         margin-top: 20px;
       }
@@ -24,11 +26,11 @@
     }
 
     h1 {
-      color: #181818;
       font-size: 24px;
+      font-weight: 800;
       letter-spacing: 1%;
       text-transform: uppercase;
-      font-weight: 800;
+      color: #181818;
     }
 
     p {

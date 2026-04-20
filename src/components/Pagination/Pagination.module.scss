@@ -2,29 +2,29 @@
   li {
     display: inline-block;
   }
+
   a {
-    text-align: center;
+    display: inline-block;
     width: 45px;
     height: 45px;
     line-height: 42px;
+    margin-right: 10px;
     border: 1px solid #fe5f1e;
     border-radius: 30px;
-    margin-right: 10px;
+    text-align: center;
     cursor: pointer;
-    display: inline-block;
     color: #fe5f1e;
+
     &:hover {
-      background-color: #fe5f1e;
       color: #fff;
+      background-color: #fe5f1e;
     }
   }
 
-  :global {
-    .selected {
-      a {
-        background-color: #fe5f1e;
-        color: #fff;
-      }
+  .selected {
+    a {
+      background-color: #fe5f1e;
+      color: #fff;
     }
   }
 }
