@@ -4,8 +4,8 @@ import userEvent from "@testing-library/user-event";
 import Search from "../components/Search";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../components/redux/slices/filterSlice";
-import { jest } from "@jest/globals";
-// MOCK ОДИН РАЗ (без spyOn)
+
+// MOCK
 jest.mock("react-redux", () => ({
   useDispatch: jest.fn(),
 }));
