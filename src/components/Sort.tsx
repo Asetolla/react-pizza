@@ -40,7 +40,7 @@ const SortPopUp: React.FC<SortProps> = ({ value }) => {
         !event?.composedPath()?.includes(sortRef.current)
       ) {
         setOpen(false);
-        console.log("click outside");
+        //console.log("click outside");
       }
     };
     document.body.addEventListener("click", handleClickOutside);

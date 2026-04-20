@@ -1,5 +1,5 @@
 import React from "react";
-import useWhyDidYouUpdate from "ahooks/lib/useWhyDidYouUpdate";
+//import useWhyDidYouUpdate from "ahooks/lib/useWhyDidYouUpdate";
 
 type CategoriesProps = {
   value: number;
