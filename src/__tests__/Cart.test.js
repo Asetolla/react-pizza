@@ -89,7 +89,7 @@ describe("Home component", () => {
     expect(await screen.findByText(/корзина/i)).toBeInTheDocument();
 
     const state = store.getState();
-    //console.log("state", state);
+    console.log("state", state);
     expect(state.cart.items.length).toBe(1);
     expect(state.cart.items[0].title).toBe("Пепперони");
   });

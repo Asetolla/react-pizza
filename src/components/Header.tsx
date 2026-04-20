@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 const Header = () => {
   const { items, totalPrice } = useSelector(selectCart);
   const location = useLocation();
-  //console.log(location);
+  console.log(location);
   const totalCount = items.reduce((sum: number, item) => sum + item.count, 0);
   const isMounted = useRef(false);
   useEffect(() => {
