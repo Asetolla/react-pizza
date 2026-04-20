@@ -1,0 +1,47 @@
+name: React Pizza Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: install dependencies
+        run: npm ci
+
+      # 1. Линтер JS/TS
+      - name: run eslint
+        run: npm run lint:js
+
+      # 2. Stylelint (CSS/SCSS)
+      - name: run stylelint
+        run: npm run lint:css
+
+      # 3. Prettier check (не форматирует, а проверяет)
+      - name: check prettier
+        run: npx prettier . --check
+
+      # 4. Тесты
+      - name: run tests
+        run: npm test -- --watchAll=false
+
+      # 5. Сборка
+      - name: build project
+        run: npm run build
+
+      # 6. Deploy
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+      - uses: actions/deploy-pages@v4
