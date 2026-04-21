@@ -43,7 +43,7 @@
     "lint:fix": "npm run lint:js:fix ; npm run lint:css:fix ; npm run format",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build -o build/storybook"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build && npm run build-storybook"
+  publish = "build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

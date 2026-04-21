@@ -14,41 +14,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # 1. Клонирование репозитория
+      - name: checkout repo
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      # 2. Node.js
+      - name: setup node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
+      # 3. Установка зависимостей
       - name: install dependencies
         run: npm install
 
-      # 1. Линтер JS/TS
+      # 4. Линтинг JS/TS
       - name: run eslint
         run: npm run lint:js
 
-      # 2. Stylelint (CSS/SCSS)
+      # 5. Линтинг CSS/SCSS
       - name: run stylelint
         run: npm run lint:css
 
-      # 3. Prettier check (не форматирует, а проверяет)
+      # 6. Проверка форматирования
       - name: check prettier
         run: npm run format
 
-      # 4. Тесты
+      # 7. Тесты
       - name: run tests
         run: npm test -- --watchAll=false
 
-      # 5. Сборка
+      # 8. Сборка приложения
       - name: build project
         run: npm run build
         env:
           CI: false
 
-      # 6. Deploy
-      - uses: actions/upload-pages-artifact@v3
+      # 9. Сборка Storybook (в build/storybook)
+      - name: build storybook
+        run: npm run build-storybook
+
+      # 10. Деплой
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: build
 
-      - uses: actions/deploy-pages@v4
+      - name: deploy to github pages
+        uses: actions/deploy-pages@v4
