@@ -12,7 +12,6 @@ module.exports = {
     "react-app",
     "react-app/jest",
     "plugin:storybook/recommended",
-    "plugin:react-hooks/recommended",
     "prettier",
   ],
 
