@@ -45,7 +45,6 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "homepage": "https://asetolla.github.io/react-pizza/",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
