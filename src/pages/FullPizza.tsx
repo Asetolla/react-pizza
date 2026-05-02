@@ -1,31 +1,31 @@
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { getErrorMessage } from "../utils/error";
+import React from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { getErrorMessage } from '../utils/error'
 const FullPizza: React.FC = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const { id } = useParams()
+  const navigate = useNavigate()
   const [pizza, setPizza] = React.useState<{
-    imageUrl: string;
-    title: string;
-    price: number;
-  }>();
+    imageUrl: string
+    title: string
+    price: number
+  }>()
   React.useEffect(() => {
     async function fetchPizzas() {
       try {
-        const { data } = await axios.get("/items/" + id);
-        setPizza(data);
+        const { data } = await axios.get('/items/' + id)
+        setPizza(data)
       } catch (error: unknown) {
-        console.error(getErrorMessage(error));
-        alert("Ошибка при получении пиццы");
-        navigate("/");
+        console.error(getErrorMessage(error))
+        alert('Ошибка при получении пиццы')
+        navigate('/')
       }
     }
-    fetchPizzas();
-  }, []);
+    fetchPizzas()
+  }, [])
 
   if (!pizza) {
-    return "Загрузка...";
+    return 'Загрузкаа...'
   }
   return (
     <div>
@@ -33,6 +33,6 @@ const FullPizza: React.FC = () => {
       <h2>{pizza.title}</h2>
       <h4>{pizza.price}</h4>
     </div>
-  );
-};
-export default FullPizza;
+  )
+}
+export default FullPizza
